@@ -41,4 +41,20 @@ bool PacManGame :: getAChoice() {
 	}
 }
 
-//void initGame() {}
+void PacManGame :: startGame() {
+
+	char key = 0;
+	int dir;
+	do {
+		if (_kbhit())
+		{
+			key = _getch();
+			if((dir= pacman.getDirection(key))!= -1)
+				pacman.setDirection(dir);		
+	pacman.move();
+	sleep(400);
+	while(key!= ESC);
+
+	
+	
+}
