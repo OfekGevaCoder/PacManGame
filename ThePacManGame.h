@@ -17,7 +17,7 @@ public:
 	void printMenu();
 	void printInsructions();
 	bool getAChoice();
-	//void startGame();
+	void startGame();
 
 
 };
