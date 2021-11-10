@@ -10,4 +10,6 @@ public:
 	void set(int a, int b) { x = a; y = b; }
 	void draw(char ch);
 	void move(char dir);
+	int& getX();
+	int& getY();
 };
