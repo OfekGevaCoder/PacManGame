@@ -7,7 +7,16 @@ void Point :: draw(char ch) {
 	
 }
 
-
+int& Point:: getX{
+	return &x;
+}
+	
+int& Point:: getY{
+	return &y;
+}	
+	
+	
+	
 void Point::move(char dir) {
 	switch (dir) {
 	case 'w': // UP
