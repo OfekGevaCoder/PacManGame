@@ -42,3 +42,20 @@ bool PacManGame :: getAChoice() {
 }
 
 //void initGame() {}
+
+void PacManGmae:: startGame
+{
+ Board gameBoard;
+ Pacman gamePacman;
+ //Ghosts gameGhosts;
+ board.print;
+ 
+ if (gamePacman.getX==gameGhosts.getX && gamePacman.getY==gameGhosts.getY)
+ 	gamepacman.pacVsGhost;
+ 
+	
+	
+	
+	
+	
+}
