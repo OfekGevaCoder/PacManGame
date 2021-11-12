@@ -5,6 +5,7 @@
 // BUT, you need to change the content of the config!
 #include "config.h"
 #include <iostream>
+#include "Color.h"
 #include <stdio.h>
 #include <stdlib.h>
 
