@@ -42,4 +42,10 @@ void Point::move(int dir) {
 		break;
 	}
 }
-
+bool Point::pacManVSghost(Point p)
+{
+if(x == p.getx() && y == p.gety())
+	return false;
+return true;
+	
+}
