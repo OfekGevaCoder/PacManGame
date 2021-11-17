@@ -17,4 +17,5 @@ public:
 	void move(int dir);								// move the point accordig the direction
 	const int& getX() const { return x; }			// get the x of the point
 	const int& getY() const { return y; }			// get the y of the point 
+	bool pacManVSghost(Point p);
 };
