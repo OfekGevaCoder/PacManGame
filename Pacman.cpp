@@ -21,10 +21,12 @@ int Pacman :: getDirection(char c) {		// get direction according the user choice
 		return -1;
 }
 
-void Pacman::move(const int& dir) {
+void Pacman::move(Point ghost , const int& dir) {
 	
 	setDirection(dir);
 	location.move(this->direction);		// move the point
-	
+		if (location.pacManVSghost(ghost)==false)
+			pacVsGhost();
+
 	location.draw(figure);				// print the pigure in the new point
 }
