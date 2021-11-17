@@ -1,5 +1,4 @@
 #include "io_utils.h"
-#include "Color.h"
 
 
 using namespace std;
@@ -8,7 +7,6 @@ using namespace std;
 void gotoxy(int x, int y) {}
 int _getch(void) { return 0; }
 int _kbhit(void) { return 0; }
-void setTextColor(Color color){}
 void Sleep(unsigned long) {}
 void hideCursor() {}
 void clear_screen() {}

@@ -2,6 +2,7 @@
 
 #include "io_utils.h"
 #include "Point.h"
+#include "Ghost.h"
 using namespace std;
 
 #define B '.' // -> Bread Crumbs
@@ -15,10 +16,13 @@ class Board {
 	unsigned int point=0;
 
 public:
-	Board();
-	void print();
-	void points();
-	void remainingLife();
-	void eatBreadcrumbs(const Point& pacPrevLoc );
-	//friend bool nextMove(const Point& pacNextMove);
+	Board();						// c'tor to init the board
+	void print();					
+	void points();					// print the point and update after every step
+	void remainingLife();			// print the remaining life 
+	void eatBreadcrumbs(const Point& pacPrevLoc );				// check if the pacMan eat breadcrumbs and update thr board after the pacman move
+	void checkNextPacMove(Point p, int& dir);						// check if the next move of the pacMan is not a wall
+	char getCell(Point p) { return board[p.getY()][p.getX()]; }	// return what in char in the cell that we ask for
+	void checkNextGhostMove(Ghost g);							// check if the next move of the ghost availabe in the board				
+
 };

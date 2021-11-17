@@ -41,4 +41,49 @@ bool PacManGame :: getAChoice() {
 	}
 }
 
+void PacManGame :: runGame() {
+
+	char key;
+	int dir=4;
+	gameBoard.print();
+
+
+	while (dir!=-1) {
+
+			gameBoard.checkNextPacMove(pac.getPoint(), dir);				// check the next move of the pac on the board
+			gameBoard.eatBreadcrumbs(pac.getPoint());
+			pac.move(dir);
+			
+			gameBoard.checkNextGhostMove(ghost1);				// check the next move of the pac on the board
+			ghost1.move(gameBoard.getCell(ghost1.getPoint()));
+			
+			ghost2.move(gameBoard.getCell(ghost2.getPoint()));
+
+			Sleep(200);
+
+			if (_kbhit()) {
+				if ((key = _getch()) != ESC) {
+					dir = pac.getDirection(key);
+				}
+				else stopper = true;
+			}
+			if (stopper) stopGame();
+	}
+}
+
+void PacManGame :: stopGame() {
+	
+	clear_screen();
+	cout << "GAME PAUSED ";
+	
+	while (stopper) {
+
+		if (_kbhit() && _getch() == ESC) {
+			clear_screen();
+			gameBoard.print();
+			stopper = false;
+		}
+	}
+}
+
 //void initGame() {}

@@ -1,6 +1,6 @@
 #include "Point.h"
 
-void Point :: draw(char ch) {
+void Point :: draw(char ch) const{
 	
 	gotoxy(x, y);
 	cout << ch << endl;
@@ -8,47 +8,37 @@ void Point :: draw(char ch) {
 }
 
 
-void Point::move(char dir) {
+void Point::move(int dir) {
+
+
 	switch (dir) {
-	case 'w': // UP
+	case UP: // UP
 
 		--y;
-		if (y < 1 && x==40) {
-			y = 24;
-		}
-		else if (y < 1) {
-			y == 1;
+		if (y < 1 && x==WIDTH/2) {				// get in to up tunnel
+			y = HEIGHT-1;
 		}
 		break;
-	case 'x': // DOWN
+	case DOWN: // DOWN
 		++y;
-		if (y > 24 && x==40) {
+		if (y > HEIGHT - 2 && x == WIDTH / 2) {		// get in to down tunnel
 			y = 1;
 		}
-		else if (y > 24) {
-			y = 24;
-		}
 		break;
-	case 'a': // LEFT
+	case LEFT: // LEFT
 		--x;
-		if (x < 1 && y == 12) {
-			x = 79;
-		}
-		else if (x < 1) {
-			x = 1;
+		if (x <= 1 && y == HEIGHT / 2 ) {		// get in to left tunnel
+			x = WIDTH - 2;
 		}
 		break;
-	case 'd': // RIGHT
+	case RIGHT: // RIGHT
 		++x;
-		if (x > 79 && y == 12) {
-			x = 1;
-		}
-		else if (x < 1) {
+		if (x > WIDTH - 2 && y == HEIGHT / 2) {		// get in to right tunnel
 			x = 1;
 		}
 		break;
 
-	case 's':
+	case STAY:	// STAY 
 		break;
 	}
 }

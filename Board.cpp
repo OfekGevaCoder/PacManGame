@@ -1,4 +1,4 @@
-#include "Board.h"
+﻿#include "Board.h"
 
 Board::Board() : board{
 	W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, S, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
@@ -26,7 +26,8 @@ Board::Board() : board{
 	W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, S, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W } {}
 
 
-void Board :: print() {
+
+void Board :: print() {					// print the board , the points and the life of the game
 
 	for (int i = 0; i < HEIGHT; i++) {
 		for (int j = 0; j < WIDTH; j++) {
@@ -57,19 +58,36 @@ void Board::remainingLife() {
 
 void Board :: eatBreadcrumbs( const Point& pacPrevLoc) {
 	
-	if (board[pacPrevLoc.getY()][pacPrevLoc.getX()] == B) {
-		this->point++;
+	if (board[pacPrevLoc.getY()][pacPrevLoc.getX()] == B) {		// check if the pacman on bread crumb
+		this->point++;											// if he is so add plus 1 to points 
+		board[pacPrevLoc.getY()][pacPrevLoc.getX()] = S;			// and update the board in that point to space 
 	}
-	board[pacPrevLoc.getY()][pacPrevLoc.getX()] = S;
-	
-	pacPrevLoc.draw(S);
-	points();
+	pacPrevLoc.draw(S);											// draw space before he move to next location 
+	points();												
 }
 
-/*bool  nextMove(const Point& pacNextMove) {
-	
-	if (Board :: board[pacNextMove.getY()][pacNextMove.getX()] == W) {
-		return false;
+void Board :: checkNextPacMove(Point p, int& dir){
+
+	p.move(dir);							// get p by val so do not change the pac in the game function 
+
+	if (board[p.getY()][p.getX()] == W) {	// check if wall
+		dir = 4;							// if it is so the direction turn to STAY
 	}
-	return true;
-}*/
+}
+
+void Board::checkNextGhostMove(Ghost g) {
+
+	Point p = g.getPoint();
+	int dir = g.getDirection();
+	p.move(dir);
+
+	if (board[p.getY()][p.getX()] == W  /* function that check if we need to switch the direction of the ghost*/) {
+
+		switch (dir) {}
+
+			// לחלק למקרים על פי דיר ולהפוך לו את התנועה מהצעד הבא 
+			
+	}
+
+
+}

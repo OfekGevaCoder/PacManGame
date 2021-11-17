@@ -11,10 +11,11 @@ class  Pacman {
 
 public:
 	
-	Pacman() : location(startPoint,startPoint) {}
-	void pacVsGhost() { location.set(startPoint, startPoint); }
-	int getDirection(char c);
-	void setDirection(int dir) { direction = dir; }
-	void move();
+	Pacman() : location(startPoint,startPoint) {}					// c'tor to init the pacMan to his start point 
+	void pacVsGhost() { location.set(startPoint, startPoint); }		// turn on when the pacMan colides ghost
+	int getDirection(char c);										// get direction according the user choice
+	void setDirection(int dir) { direction = dir; }					// set the direction of the pacMan if it's legal direction
+	void move(const int& dir);									
+	const Point& getPoint() const { return location; }				// returning the location of the pacMan at that moment 
 
 };

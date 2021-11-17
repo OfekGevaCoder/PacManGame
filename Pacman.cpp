@@ -1,6 +1,6 @@
 #include "Pacman.h"
 
-int Pacman :: getDirection(char c) {
+int Pacman :: getDirection(char c) {		// get direction according the user choice
 
 	if (c == 'w' || c == 'W') {
 		return UP;
@@ -17,10 +17,14 @@ int Pacman :: getDirection(char c) {
 	else if (c == 's' || c == 'S') {
 		return STAY;
 	}
+	else
+		return -1;
 }
 
-void Pacman::move() {
-
-	location.move(this->direction);
-	location.draw(figure);
+void Pacman::move(const int& dir) {
+	
+	setDirection(dir);
+	location.move(this->direction);		// move the point
+	
+	location.draw(figure);				// print the pigure in the new point
 }
